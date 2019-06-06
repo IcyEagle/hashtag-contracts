@@ -6,6 +6,7 @@ import "zeppelin-solidity/contracts/math/Math.sol";
 import "zeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
 
 contract Hashtag is DetailedERC20, StandardToken, Ownable {
+    using Math for uint256;
     using SafeMath for uint256;
 
     uint256 public cap;
