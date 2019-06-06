@@ -20,7 +20,7 @@ contract("Hashtag", accounts => {
     }
 
     beforeEach(async () => {
-        contract = await Hashtag.new("CRYPTO", "CRY", 18, TOKENS_PER_BLOCK, CAP);
+        contract = await Hashtag.new("HASHTAG", "HTG", 18, TOKENS_PER_BLOCK, CAP);
     });
 
     it("provides zero balance just after deployment", async () => {
@@ -47,7 +47,7 @@ contract("Hashtag", accounts => {
         assert.equal(balance, 3 * TOKENS_PER_BLOCK, "Mined incorrect amount of tokens");
     });
 
-    it("works correct with multiple mining calls", async () => {
+    it("mines correct amount of tokens with multiple mining calls", async () => {
         await contract.mine();
 
         const firstBalance = await contract.balanceOf(firstAccount);
@@ -84,7 +84,7 @@ contract("Hashtag", accounts => {
         assert.equal(balance.toString(), updatedBalance.toString(), "Balances should be equal");
     });
 
-    it("reduces amount of mined tokens of it overflows the cap", async () => {
+    it("reduces amount of mined tokens if it overflows the cap", async () => {
         // spawn plenty of blocks
         await Promise.all(Array(CAP_IN_BLOCKS + 5).fill(null).map(mineBlock));
 
@@ -98,7 +98,7 @@ contract("Hashtag", accounts => {
     // it("works correct when multiple `mine` calls are present in a single block")
     // it's a real challenge to run this test with Ganache CLI since it puts every transaction in a separate block
 
-    it("doesn't allow not owners to mine", async () => {
+    it("doesn't allow non-owners to mine", async () => {
         await assertThrow(contract.mine({ from: secondAccount }), /revert/);
     });
 });

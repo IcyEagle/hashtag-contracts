@@ -10,7 +10,7 @@ contract Hashtag is DetailedERC20, StandardToken, Ownable {
 
     uint256 public cap;
     uint256 public blockIncome;
-    uint public processedBlock;
+    uint public processedBlockNumber;
 
     constructor(string _name, string _symbol, uint8 _decimals, uint _blockIncome, uint _cap) DetailedERC20(_name, _symbol, _decimals) StandardToken() Ownable() public {
         require(_cap > 0);
@@ -18,24 +18,22 @@ contract Hashtag is DetailedERC20, StandardToken, Ownable {
 
         cap = _cap;
         blockIncome = _blockIncome;
-        processedBlock = block.number;
+        processedBlockNumber = block.number;
     }
 
     function mine() public onlyOwner returns (uint256) {
-        uint blocks = block.number - processedBlock;
-        uint256 tokens = blocks.mul(blockIncome);
-
-        uint256 nextTotalSupply = totalSupply_.add(tokens);
+        uint blocksCount = block.number - processedBlockNumber;
+        uint256 proposedIncome = blocksCount.mul(blockIncome);
+        uint256 nextTotalSupply = totalSupply_.add(proposedIncome);
         uint256 cappedTotalSupply = nextTotalSupply.min256(cap);
-        uint256 income = cappedTotalSupply - totalSupply_;
+        uint256 actualIncome = cappedTotalSupply - totalSupply_;
 
-        require(income > 0);
+        require(actualIncome > 0);
 
+        balances[owner] = balances[owner].add(actualIncome);
         totalSupply_ = cappedTotalSupply;
-        processedBlock = block.number;
+        processedBlockNumber = block.number;
 
-        balances[owner] = balances[owner].add(income);
-
-        return income;
+        return actualIncome;
     }
 }
