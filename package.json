@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "truffle": "^5.0.21",
+    "zeppelin-solidity": "1.12.0"
+  },
+  "scripts": {
+    "ganache": "docker run -d -p 8545:8545 trufflesuite/ganache-cli:latest",
+    "build": "./node_modules/.bin/truffle compile",
+    "test": "./node_modules/.bin/truffle test"
+  }
+}

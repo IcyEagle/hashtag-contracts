@@ -1,0 +1,7 @@
+Don't forget to launch Ganache CLI before testing:
+
+`npm run ganache`
+
+Run tests with:
+
+`npm test`
