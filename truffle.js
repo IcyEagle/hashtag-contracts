@@ -18,11 +18,13 @@
  *
  */
 
-// const HDWalletProvider = require('truffle-hdwallet-provider');
-// const infuraKey = "fj4jll3k.....";
-//
-// const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
+const HDWalletProvider = require('truffle-hdwallet-provider');
+const ropstenProjectKey = "7a281a0d6b38440d8411ab6637b9f638";
+const mainnetProjectKey = "34e5dfb1f26240f7bd94a8181633c2e3";
+
+const fs = require('fs');
+const ropstenSecret = fs.readFileSync(".ropsten.secret").toString().trim();
+const mainnetSecret = fs.readFileSync(".mainnet.secret").toString().trim();
 
 module.exports = {
   /**
@@ -51,7 +53,7 @@ module.exports = {
       host: "127.0.0.1",
       port: 8545,
       network_id: "*" // Match any network id
-    }
+    },
 
     // Another network with more advanced options...
     // advanced: {
@@ -65,14 +67,23 @@ module.exports = {
 
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
-    // ropsten: {
-      // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`),
-      // network_id: 3,       // Ropsten's id
-      // gas: 5500000,        // Ropsten has a lower block limit than mainnet
-      // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
-      // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-      // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
-    // },
+    ropsten: {
+      provider: () => new HDWalletProvider(ropstenSecret, `https://ropsten.infura.io/v3/${ropstenProjectKey}`),
+      network_id: 3,       // Ropsten's id
+      gas: 5500000,        // Ropsten has a lower block limit than mainnet
+      confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      skipDryRun: false     // Skip dry run before migrations? (default: false for public nets )
+    },
+
+    mainnet: {
+      provider: () => new HDWalletProvider(mainnetSecret, `https://mainnet.infura.io/v3/${mainnetProjectKey}`),
+      network_id: 3,       // Ropsten's id
+      gas: 5500000,        // Ropsten has a lower block limit than mainnet
+      confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      skipDryRun: false     // Skip dry run before migrations? (default: false for public nets )
+    },
 
     // Useful for private networks
     // private: {

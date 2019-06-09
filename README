@@ -1,7 +1,17 @@
-Don't forget to launch Ganache CLI before testing:
+* Development environment setup
 
 `npm run ganache`
 
-Run tests with:
+* Testing
 
 `npm test`
+
+* Migration
+
+Create files `.mainnet.secret` and `.ropsten.secret` in the project root directory.
+Fill them with private keys respectively (whether you want to deploy).
+Use npm scripts for deployment: `npm run ropsten-migrate` or `npm run mainnet-migrate`.
+
+* Mining
+
+In order to fetch some more tokens from a contract use `npm run ropsten-mine` or `npm run mainnet-mine`.

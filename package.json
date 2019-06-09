@@ -2,10 +2,17 @@
   "license": "UNLICENSED",
   "dependencies": {
     "truffle": "^5.0.21",
+    "truffle-hdwallet-provider": "^1.0.10",
     "zeppelin-solidity": "1.12.0"
   },
   "scripts": {
     "ganache": "docker run -d -p 8545:8545 trufflesuite/ganache-cli:latest",
+    "ropsten-mine": "./node_modules/.bin/truffle exec scripts/mine.js --network ropsten",
+    "mainnet-mine": "./node_modules/.bin/truffle exec scripts/mine.js --network mainnet",
+    "ropsten-migrate": "./node_modules/.bin/truffle migrate --network ropsten",
+    "mainnet-migrate": "./node_modules/.bin/truffle migrate --network mainnet",
+    "ropsten-console": "./node_modules/.bin/truffle console --network ropsten",
+    "mainnet-console": "./node_modules/.bin/truffle console --network mainnet",
     "build": "./node_modules/.bin/truffle compile",
     "test": "./node_modules/.bin/truffle test"
   }
