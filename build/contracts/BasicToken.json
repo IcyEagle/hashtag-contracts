@@ -2577,7 +2577,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.10",
-  "updatedAt": "2019-06-09T10:39:39.247Z",
+  "updatedAt": "2019-06-09T11:04:59.388Z",
   "devdoc": {
     "methods": {
       "balanceOf(address)": {

@@ -4087,12 +4087,12 @@
     "3": {
       "events": {},
       "links": {},
-      "address": "0xD781843F218b5618b929A27B442FDe038EAD89de",
-      "transactionHash": "0x0fa67523b836d282193870cb5bde48fc013c4a6769f295c2909df3154f59dbee"
+      "address": "0x56eEacF016BCf54Af8ae125084E83D2B6Eada707",
+      "transactionHash": "0x029183b1630bfda5fa048cc70addd5638ad97ca11a6eeff0f7431d9cb88f593d"
     }
   },
   "schemaVersion": "3.0.10",
-  "updatedAt": "2019-06-09T10:42:08.783Z",
+  "updatedAt": "2019-06-09T11:08:01.257Z",
   "devdoc": {
     "methods": {
       "allowance(address,address)": {
