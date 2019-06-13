@@ -1,19 +1,19 @@
-* Development environment setup
+* Setup dev environment
 
 `npm run ganache`
 
-* Testing
+* Test
 
 `npm test`
 
-* Migration
+* Migrate
 
 Create files `.mainnet.secret` and `.ropsten.secret` in the project root directory.
 Fill them with private keys respectively (whether you want to deploy).
 Use npm scripts for deployment: `npm run ropsten-migrate` or `npm run mainnet-migrate`.
 
-Optionally, you can provide source code using this article: https://ropsten.etherscan.io/address/0x56eeacf016bcf54af8ae125084e83d2b6eada707#contracts
+Optionally, you can provide source code using this article: https://www.sitepoint.com/flattening-contracts-debugging-remix/
 
-* Mining
+* Mine
 
-In order to fetch some more tokens from a contract use `npm run ropsten-mine` or `npm run mainnet-mine`.
+`npm run ropsten-mine` or `npm run mainnet-mine`
