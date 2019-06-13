@@ -9,15 +9,15 @@ contract Hashtag is DetailedERC20, StandardToken, Ownable {
     using Math for uint256;
     using SafeMath for uint256;
 
-    uint256 public cap;
+    uint256 public maxSupply;
     uint256 public blockIncome;
     uint public processedBlockNumber;
 
-    constructor(string _name, string _symbol, uint8 _decimals, uint _blockIncome, uint _cap) DetailedERC20(_name, _symbol, _decimals) StandardToken() Ownable() public {
-        require(_cap > 0);
+    constructor(string _name, string _symbol, uint8 _decimals, uint _blockIncome, uint _maxSupply) DetailedERC20(_name, _symbol, _decimals) StandardToken() Ownable() public {
+        require(_maxSupply > 0);
         require(_blockIncome > 0);
 
-        cap = _cap;
+        maxSupply = _maxSupply;
         blockIncome = _blockIncome;
         processedBlockNumber = block.number;
     }
@@ -26,7 +26,7 @@ contract Hashtag is DetailedERC20, StandardToken, Ownable {
         uint blocksCount = block.number - processedBlockNumber;
         uint256 proposedIncome = blocksCount.mul(blockIncome);
         uint256 nextTotalSupply = totalSupply_.add(proposedIncome);
-        uint256 cappedTotalSupply = nextTotalSupply.min256(cap);
+        uint256 cappedTotalSupply = nextTotalSupply.min256(maxSupply);
         uint256 actualIncome = cappedTotalSupply - totalSupply_;
 
         require(actualIncome > 0);
