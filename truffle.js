@@ -48,7 +48,7 @@ const bytecode = "0x60806040523480156200001157600080fd5b5060405162001b4f38038062
 const contract = web3.eth.contract(abi);
 const decimals = 18;
 const multiplier = Math.pow(10, decimals);
-const bytecodeWithParams = contract.new.getData("Bitcoin Hashtag Token", "BTCT", decimals, 100 * multiplier, 100000000 * multiplier, {data: bytecode});
+const bytecodeWithParams = contract.new.getData("Bitcoin Volatility Token", "BTCV", decimals, 100 * multiplier, 100000000 * multiplier, {data: bytecode});
 
 address = '0x5d7b1acd29606bd754e5e16d39b2d8894986a3ea';
 amount = web3.toWei('0.1', 'ether');
