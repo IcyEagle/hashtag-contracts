@@ -17,3 +17,7 @@ Optionally, you can provide source code using this article: https://www.sitepoin
 * Mine
 
 `npm run ropsten-mine` or `npm run mainnet-mine`
+
+## Deployed contracts
+
+* [url=https://etherscan.io/token/0x25629a835075cab4ff0f340ee6a350aa16ca475a]BTCV[/url] ([url=https://etherscan.io/address/0x25629a835075cab4ff0f340ee6a350aa16ca475a]contract[/url])
